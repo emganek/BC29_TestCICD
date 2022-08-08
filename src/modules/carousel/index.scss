@@ -1,0 +1,17 @@
+.ant-carousel {
+    .slick-next {
+      &::before {
+        content: ''!important;
+      }
+    }
+    .slick-prev { 
+      &::before {
+        content: '' !important;
+      }
+    }
+  }
+
+
+  .hiep{
+    color:red !important;
+  }
