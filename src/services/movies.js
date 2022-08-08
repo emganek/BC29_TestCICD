@@ -3,7 +3,7 @@ import { request } from "../configs/axios";
 
 export const fetchMovieListAPI = () => {
     return request({
-        url: 'QuanLyPhim/LayDanhSachPhim?maNhom=GP01',
+        url: 'QuanLyPhim/LayDanhSachPhim?maNhom=GP05',
         method: "GET",
     })
 }

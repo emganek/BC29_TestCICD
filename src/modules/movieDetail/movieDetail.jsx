@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import { useAsync } from '../../hooks/useAsync';
 import { fetchMovieDetaiAPI } from '../../services/movies';
+import { formatDate } from '../../utils/common';
 
 export default function MovieDetail() {
     const params = useParams().movieID;
 
-    const [movieDetail, setMovieDetail] = useState({});
+    const {state:movieDetail ={}} = useAsync({service: ()=>fetchMovieDetaiAPI(params)})
 
-    useEffect(()=>{
-        fetchMovieDetail();
-    },[]);
+    // const [movieDetail, setMovieDetail] = useState({});
 
-    const fetchMovieDetail = async () =>{
-        const data = await (await fetchMovieDetaiAPI(params)).data.content;
-        setMovieDetail(data)
-    }
+    // useEffect(()=>{
+    //     fetchMovieDetail();
+    // },[]);
+
+    // const fetchMovieDetail = async () =>{
+    //     const data = await (await fetchMovieDetaiAPI(params)).data.content;
+    //     setMovieDetail(data)
+    // }
 
     return (
         <div className="row">
@@ -24,7 +28,7 @@ export default function MovieDetail() {
             <div className="col-9">
                 <h4>{movieDetail.tenPhim}</h4>
                 <p>{movieDetail.moTa}</p>
-                <p>{movieDetail.ngayKhoiChieu}</p>
+                <p>{formatDate(movieDetail.ngayKhoiChieu)}</p>
                 <div>
                     <button className="btn btn-info mr-2">TRAILER</button>
                 </div>

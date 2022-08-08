@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import { fetchMovieShowTimeAPI } from '../../services/cinema';
-import moment from 'moment';
+import { formatDate } from '../../utils/common';
 
 export default function ShowTime() {
     const params = useParams().movieID;
@@ -49,7 +49,7 @@ export default function ShowTime() {
                                                         <div key={schedule.maLichChieu} className="col-3">
 
                                                             <Link to={`/booking/${schedule.maLichChieu}`} href="#">
-                                                                {moment(schedule.ngayChieuGioChieu).format('LLL')}</Link>
+                                                                {formatDate(schedule.ngayChieuGioChieu)}</Link>
                                                         </div>
                                                     )
                                                 })

@@ -1,15 +1,17 @@
-import React from 'react'
+import React, { lazy } from 'react'
 import { useRoutes } from 'react-router-dom';
-import AuthGuard from '../guards/auth.guard';
-import NoAuthGaurd from '../guards/no-auth.guard';
-import AdminLayout from '../layouts/admin';
-import HomeLayout from '../layouts/home';
-import Booking from '../modules/booking/booking';
-import HomePage from '../pages/home/home';
-import Login from '../pages/login/login';
-import MovieManagement from '../pages/movieManagement/movieManagement';
-import MovieDetailPage from '../pages/movieDetail/movieDetail';
-import AdminGuard from '../guards/admin.guard';
+
+const AuthGuard = lazy(() => import('../guards/auth.guard'));
+const NoAuthGaurd = lazy(() => import('../guards/no-auth.guard'));
+const AdminLayout = lazy(() => import('../layouts/admin'));
+const HomeLayout = lazy(() => import('../layouts/home'));
+const Booking = lazy(() => import('../modules/booking/booking'));
+const HomePage = lazy(() => import('../pages/home/home'));
+const Login = lazy(() => import('../pages/login/login'));
+const MovieManagement = lazy(() => import('../pages/movieManagement/movieManagement'));
+const MovieDetailPage = lazy(() => import('../pages/movieDetail/movieDetail'));
+const AdminGuard = lazy(() => import('../guards/admin.guard'));
+
 
 export default function Router() {
     const routing = useRoutes([
